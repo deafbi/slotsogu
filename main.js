@@ -31,7 +31,7 @@ const roll = (reel, offset = 0) => {
         const style = getComputedStyle(reel),
             currentPosition = parseFloat(style["background-position-y"]) || 0,
             // Minimum of 2 full spins + random additional spins
-            delta = (offset + 2) * num_icons + Math.floor(Math.random() * num_icons),
+            delta = (offset + 5) * num_icons + Math.floor(Math.random() * num_icons),
             targetPosition = currentPosition + delta * icon_height,
             normTargetPosition = targetPosition % (num_icons * icon_height),
             // Calculate the final index to show the item in the middle
@@ -90,7 +90,7 @@ function animateValue(obj, start, end, duration) {
  * Roll all reels
  */
 function rollAll() {
-    if (isRolling == true) {
+    if (isRolling == true || balance <= 0) {
         return;
     } else {
         isRolling = true;
@@ -103,7 +103,9 @@ function rollAll() {
     console.log('Rolling...');
 
     // Play spin sound
-    spinSound.play();
+    if (!isMuted) {
+        spinSound.play();
+    }
 
     const reelsList = document.querySelectorAll('.slots > .flex-row > .slot-right > .row > .reel');
     
@@ -120,7 +122,9 @@ function rollAll() {
             console.log(indexes);
 
             if (indexes[0] == 6 && indexes[1] == 6 && indexes[2] == 6) {
-                wonSound.play();
+                if (!isMuted) {
+                    wonSound.play();
+                }
                 addFlashingBorder();
                 winningAmount = 15;
                 animateValue(obj, balance, balance+winningAmount, 1950);
@@ -132,7 +136,9 @@ function rollAll() {
                     isRolling = false;
                 }, 3900); 
             } else if (indexes[0] == 3 && indexes[1] == 3 && indexes[2] == 3) {
-                wonSound.play();
+                if (!isMuted) {
+                    wonSound.play();
+                }
                 addFlashingBorder();
                 winningAmount = 25;
                 animateValue(obj, balance, balance+winningAmount, 1950);
@@ -144,7 +150,9 @@ function rollAll() {
                     isRolling = false;
                 }, 3900); 
             } else if (indexes[0] == 4 && indexes[1] == 4 && indexes[2] == 4) {
-                wonSound.play();
+                if (!isMuted) {
+                    wonSound.play();
+                }
                 addFlashingBorder();
                 winningAmount = 75;
                 animateValue(obj, balance, balance+winningAmount, 1950);
@@ -156,7 +164,9 @@ function rollAll() {
                     isRolling = false;
                 }, 3900); 
             }  else if (indexes[0] == 2 && indexes[1] == 2 && indexes[2] == 2) {
-                wonSound.play();
+                if (!isMuted) {
+                    wonSound.play();
+                }
                 addFlashingBorder();
                 winningAmount = 100;
                 animateValue(obj, balance, balance+winningAmount, 1950);
@@ -168,7 +178,9 @@ function rollAll() {
                     isRolling = false;
                 }, 3900); 
             }  else if (indexes[0] == 1 && indexes[1] == 1 && indexes[2] == 1) {
-                wonSound.play();
+                if (!isMuted) {
+                    wonSound.play();
+                }
                 addFlashingBorder();
                 winningAmount = 150;
                 animateValue(obj, balance, balance+winningAmount, 1950);
@@ -180,7 +192,10 @@ function rollAll() {
                     isRolling = false;
                 }, 3900); 
             }  else if (indexes[0] == 5 && indexes[1] == 5 && indexes[2] == 5) {
-                wonSound.play();
+                if (!isMuted) {
+                    wonSound.play();
+                }
+                
                 addFlashingBorder();
                 winningAmount = 250;
                 animateValue(obj, balance, balance+winningAmount, 1950);
@@ -196,7 +211,9 @@ function rollAll() {
                 (indexes[1] === 1 || indexes[1] === 3) &&
                 (indexes[2] === 4 || indexes[2] === 6)
             ) {
-                wonSound.play();
+                if (!isMuted) {
+                    wonSound.play();
+                }
                 addFlashingBorder();
                 winningAmount = 10;
                 animateValue(obj, balance, balance+winningAmount, 1950);
@@ -226,4 +243,36 @@ function rollAll() {
         });
 }
 
-// Kickoff
+// Initialize mute state from local storage
+let isMuted = localStorage.getItem('isMuted') === 'true';
+
+// Function to toggle mute/unmute
+function toggleMute() {
+    isMuted = !isMuted;
+
+    // Update the icon based on mute state
+    const muteIcon = document.getElementById('muteIcon');
+    if (isMuted) {
+        muteIcon.classList.remove('fa-volume-up');
+        muteIcon.classList.add('fa-volume-mute');
+    } else {
+        muteIcon.classList.remove('fa-volume-mute');
+        muteIcon.classList.add('fa-volume-up');
+    }
+
+    // Save the mute state to local storage
+    localStorage.setItem('isMuted', isMuted);
+}
+
+// Initialize the mute button state on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const muteIcon = document.getElementById('muteIcon');
+    if (isMuted) {
+        muteIcon.classList.remove('fa-volume-up');
+        muteIcon.classList.add('fa-volume-mute');
+    } else {
+        muteIcon.classList.remove('fa-volume-mute');
+        muteIcon.classList.add('fa-volume-up');
+    }
+});
+

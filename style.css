@@ -209,3 +209,23 @@ body {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px -10px rgba(59, 63, 92, 0.59);
 }
+
+#muteButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+#muteButton:hover {
+    opacity: 1;
+}
+
+#muteIcon {
+    font-size: 24px; 
+    color: #ffffff;
+}
