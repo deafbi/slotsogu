@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/4ccfd0940c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="slots">
+        <div class="info">
+            <div class="logo">
+                Slots
+            </div>
+            <div class="balance">
+                Credit Balance: 
+                <img src="./assets/credits.webp" style="height: 30px; width: 30px;" alt="">
+                <font id="value" style="color:#ffcb00;font-weight:800;margin-left:-3px;">500</font>
+            </div>
+            <div class="won">
+                Cost: 
+                <img src="./assets/credits.webp" style="height: 30px; width: 30px;" alt="">
+                <font style="color:#ffcb00;font-weight:800;margin-left:-3px;">5</font>
+            </div>
+        </div>
+        <div class="flex-row">
+            <div class="winning">
+                <div class="combo">
+                    <div class="img">
+                        <img src="./assets/gp.png" alt="">
+                        <img src="./assets/gp.png" alt="">
+                        <img src="./assets/gp.png" alt="">
+                    </div>
+                    <span class="win">250</span>
+                </div>
+                <div class="combo">
+                    <div class="img">
+                        <img src="./assets/redhat.png" alt="">
+                        <img src="./assets/redhat.png" alt="">
+                        <img src="./assets/redhat.png" alt="">
+                    </div>
+                    <span class="win">150</span>
+                </div>
+                <div class="combo">
+                    <div class="img">
+                        <img src="./assets/purplehat.png" alt="">
+                        <img src="./assets/purplehat.png" alt="">
+                        <img src="./assets/purplehat.png" alt="">
+                    </div>
+                    <span class="win">100</span>
+                </div>
+                <div class="combo">
+                    <div class="img">
+                        <img src="./assets/bluehat.png" alt="">
+                        <img src="./assets/bluehat.png" alt="">
+                        <img src="./assets/bluehat.png" alt="">
+                    </div>
+                    <span class="win">75</span>
+                </div>
+                <div class="combo">
+                    <div class="img">
+                        <img src="./assets/goldhat.png" alt="">
+                        <img src="./assets/goldhat.png" alt="">
+                        <img src="./assets/goldhat.png" alt="">
+                    </div>
+                    <span class="win">25</span>
+                </div>
+                <div class="combo">
+                    <div class="img">
+                        <img src="./assets/whitehat.png" alt="">
+                        <img src="./assets/whitehat.png" alt="">
+                        <img src="./assets/whitehat.png" alt="">
+                    </div>
+                    <span class="win">15</span>
+                </div>
+                <div class="combo">
+                    <div class="img">
+                        <img src="./assets/gold-purple.jpg" style="padding: 0;" alt="">
+                        <img src="./assets/yellow-red.jpg" style="padding: 0;" alt="">
+                        <img src="./assets/blue-white.jpg" style="padding: 0;" alt="">
+                    </div>
+                    <span class="win">10</span>
+                </div>
+            </div>
+            <div class="slot-right">
+                <div class="row">
+                    <div class="reel"><div class="center"><div class="line"></div></div></div>
+                    <div class="reel"><div class="center"><div class="line"></div></div></div>
+                    <div class="reel"><div class="center"><div class="line"></div></div></div>
+                </div>
+                <button class="spin" onclick="rollAll();">
+                    Spin Slots
+                    <i class="fas fa-dice"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>
