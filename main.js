@@ -126,7 +126,7 @@ function rollAll() {
                     wonSound.play();
                 }
                 addFlashingBorder();
-                winningAmount = 15;
+                winningAmount = 120;
                 animateValue(obj, balance, balance+winningAmount, 1950);
 
                 setTimeout(() => {
@@ -140,7 +140,7 @@ function rollAll() {
                     wonSound.play();
                 }
                 addFlashingBorder();
-                winningAmount = 25;
+                winningAmount = 150;
                 animateValue(obj, balance, balance+winningAmount, 1950);
                 
                 setTimeout(() => {
@@ -154,7 +154,7 @@ function rollAll() {
                     wonSound.play();
                 }
                 addFlashingBorder();
-                winningAmount = 75;
+                winningAmount = 180;
                 animateValue(obj, balance, balance+winningAmount, 1950);
                 
                 setTimeout(() => {
@@ -168,7 +168,7 @@ function rollAll() {
                     wonSound.play();
                 }
                 addFlashingBorder();
-                winningAmount = 100;
+                winningAmount = 225;
                 animateValue(obj, balance, balance+winningAmount, 1950);
                 
                 setTimeout(() => {
@@ -182,7 +182,7 @@ function rollAll() {
                     wonSound.play();
                 }
                 addFlashingBorder();
-                winningAmount = 150;
+                winningAmount = 375;
                 animateValue(obj, balance, balance+winningAmount, 1950);
                 
                 setTimeout(() => {
@@ -197,7 +197,7 @@ function rollAll() {
                 }
                 
                 addFlashingBorder();
-                winningAmount = 250;
+                winningAmount = 750;
                 animateValue(obj, balance, balance+winningAmount, 1950);
                 
                 setTimeout(() => {
@@ -215,7 +215,7 @@ function rollAll() {
                     wonSound.play();
                 }
                 addFlashingBorder();
-                winningAmount = 10;
+                winningAmount = 60;
                 animateValue(obj, balance, balance+winningAmount, 1950);
                 
                 setTimeout(() => {
@@ -224,7 +224,25 @@ function rollAll() {
                     wonSound.currentTime = 0;
                     isRolling = false;
                 }, 3900); 
-            }else {
+            } else if (
+                (indexes[0] === 4 || indexes[0] === 2 || indexes[0] === 6) &&
+                (indexes[1] === 4 || indexes[1] === 2 || indexes[1] === 6) &&
+                (indexes[2] === 4 || indexes[2] === 2 || indexes[2] === 6)
+            ) {
+                if (!isMuted) {
+                    wonSound.play();
+                }
+                addFlashingBorder();
+                winningAmount = 15;
+                animateValue(obj, balance, balance+winningAmount, 1950);
+                
+                setTimeout(() => {
+                    removeFlashingBorder();
+                    wonSound.pause();
+                    wonSound.currentTime = 0;
+                    isRolling = false;
+                }, 3900); 
+            } else {
                 winningAmount = 0;
                 removeFlashingBorder();
                 wonSound.pause();
@@ -239,7 +257,6 @@ function rollAll() {
             wonSound.currentTime = 0;
             console.log("Winnings: " + winningAmount);
 
-            // Schedule the next roll
         });
 }
 
